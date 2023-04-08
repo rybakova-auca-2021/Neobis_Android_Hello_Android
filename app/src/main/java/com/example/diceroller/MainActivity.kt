@@ -4,25 +4,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
-import java.lang.reflect.Modifier
-import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var diceImage: ImageView
+    private lateinit var rollButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val rollButton: Button = findViewById(R.id.roll_button)
+        diceImage = findViewById(R.id.dice_image)
+        rollButton = findViewById(R.id.roll_button)
+
         rollButton.setOnClickListener {
-           // Toast.makeText(this, "button clicked", Toast.LENGTH_SHORT).show()
             rollDice()
         }
     }
 
     private fun rollDice() {
         val randomInt = java.util.Random().nextInt(6) + 1
-        val diceImage: ImageView = findViewById(R.id.dice_image)
 
         val drawableResource = when (randomInt) {
             1 -> R.drawable.dice_1
